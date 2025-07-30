@@ -28,13 +28,13 @@ st.markdown("""
     font-size: 16px;
     line-height: 1.6;
     padding: 10px;
-    background-color: #f0f2f6;
+    background-color: #4f5157;
     border-radius: 5px;
     margin: 10px 0;
 }
 
 .question-box {
-    background-color: #e8f4fd;
+    background-color: #41a5f0;
     border-left: 4px solid #1f77b4;
     padding: 15px;
     margin: 10px 0;
@@ -42,7 +42,7 @@ st.markdown("""
 }
 
 .answer-box {
-    background-color: #f0f9f0;
+    background-color: #45cc45;
     border-left: 4px solid #2ca02c;
     padding: 15px;
     margin: 10px 0;
@@ -50,7 +50,7 @@ st.markdown("""
 }
 
 .similarity-score {
-    background-color: #fff3cd;
+    background-color: #c7a330;
     border: 1px solid #ffeaa7;
     padding: 5px 10px;
     border-radius: 15px;
