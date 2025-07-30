@@ -2,6 +2,29 @@
 
 A Streamlit web application for semantic search through Arabic Questions and Answers using AI-powered similarity matching.
 
+![](https://github.com/MuhammadSenna/ar-semantic-scope/blob/main/demo/Deploy.png)
+
+## 🚀 **Try the Live Application**
+
+**✨ You can use the application directly without any installation!**
+
+### 🌐 **Live Demo**: [https://ar-semantic-scope.streamlit.app/](https://ar-semantic-scope.streamlit.app/)
+
+**Just click the link above and start searching!** 🔍
+
+- ✅ **No installation required** - runs in your browser
+- ✅ **No setup needed** - ready to use immediately  
+- ✅ **Full functionality** - all features available online
+- ✅ **Mobile friendly** - works on phones and tablets
+- ✅ **Free to use** - no registration or payment required
+
+### 🎯 **Quick Start Guide:**
+1. 🔗 Click the link: https://ar-semantic-scope.streamlit.app/
+2. 📝 Enter your Arabic question in the search box
+3. 🔍 Click "بحث (Search)" or try the example questions
+4. 📊 View similar questions with similarity scores
+5. 💡 Toggle dataset statistics for insights
+
 ## Features
 
 - 🔍 **Semantic Search**: Find similar questions using advanced NLP models
