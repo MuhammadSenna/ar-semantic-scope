@@ -25,12 +25,26 @@ python -m venv arabic_qna_env
 source arabic_qna_env/bin/activate  # On Windows: arabic_qna_env\Scripts\activate
 ```
 
-### Step 3: Install Dependencies
+### Step 3: Install NumPy (Important!)
+
+```bash
+pip install "numpy<2.0"
+```
+
+### Step 4: Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4: Run the Application
+### Step 5: Install Faiss (See Troubleshooting if issues occur)
+
+```bash
+pip install --upgrade --force-reinstall faiss-cpu
+```
+
+
+### Step 6: Run the Application
 ```bash
 streamlit run app.py
 ```
@@ -77,7 +91,6 @@ Try these Arabic questions:
 - **Search Speed**: Sub-second search after initial setup
 
 
-
 ## Project Structure
 ```
 arabic-qna-search/
@@ -86,6 +99,62 @@ arabic-qna-search/
 ├── README.md             # This file
 └── .streamlit/           # Streamlit configuration (optional)
     └── config.toml
+```
+
+
+
+## Troubleshooting
+
+### Common Issues and Solutions
+
+#### 1. **Datasets IndexError: "Wrong key type"**
+**Problem:** `TypeError: Wrong key type: '822' of type '<class 'numpy.int64'>'. Expected one of int, slice, range, str or Iterable.`
+
+**Solution:** Convert dataset to list:
+```python
+# Instead of:
+doc_text = qna_dataset["train"]["text"]
+
+# Use:
+doc_text = list(qna_dataset["train"]["text"])
+```
+
+#### 2. **NumPy Compatibility Error with Faiss**
+**Problem:** 
+```
+A module that was compiled using NumPy 1.x cannot be run in NumPy 2.0.2 as it may crash.
+AttributeError: _ARRAY_API not found
+```
+
+**Solution:** Downgrade NumPy before installing Faiss:
+```bash
+pip install "numpy<2.0"
+pip install --upgrade --force-reinstall faiss-cpu
+```
+
+#### 3. **Faiss Installation Error on Windows**
+**Problem:** 
+```
+Building wheel for faiss-cpu (pyproject.toml) ... error
+error: command 'swig.exe' failed: None
+```
+
+**Solution:** Use force reinstall to get pre-compiled wheels:
+```bash
+pip install --upgrade --force-reinstall faiss-cpu
+```
+
+### 4. Faiss Normalize Error
+**Problem:**
+```
+IndexError: tuple index out of range when calling faiss.normalize_L2()
+ ```
+**Solution:** Reshape single embeddings to 2D:
+```
+# For single query
+question_embd = model.encode(question)
+question_embd = question_embd.reshape(1, -1) # Add batch dimension
+faiss.normalize_L2(question_embd)
 ```
 
 
@@ -99,6 +168,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Models**: Sentence Transformers team for multilingual models
 - **Framework**: Streamlit team for the amazing web framework
 - **Search**: Facebook AI Research for FAISS
-
-
-
